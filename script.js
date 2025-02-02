@@ -1,13 +1,24 @@
 function login() {
     let user = document.getElementById("username").value;
     let pass = document.getElementById("password").value;
-    
-    if (user === "admin" && pass === "1234") {
+
+    // Lista de usuarios y contraseñas válidas
+    const usuarios = {
+        "admin": "1234",
+        "sara": "2723",
+        "santiago": "2712",
+        "karen": "6789",
+        "cesar": "3456"
+    };
+
+    // Verificar si el usuario y la contraseña coinciden
+    if (usuarios[user] && usuarios[user] === pass) {
         window.location.href = "encuesta.html";
     } else {
         document.getElementById("error").innerText = "Usuario o contraseña incorrectos";
     }
 }
+
 
 
 function guardarRespuestas() {
