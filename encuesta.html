@@ -9,29 +9,38 @@
 <body>
     <div class="container">
         <h1>Personaliza tu recomendación</h1>
+        
+        <!-- Estado de ánimo -->
         <label for="estado">¿Cómo te sientes?</label>
-        <select id="estado">
+        <select id="estado" required>
+            <option value="" selected disabled hidden>Selecciona una opción</option>
             <option value="feliz">Feliz 😊</option>
             <option value="estresado">Estresado 😖</option>
             <option value="relajado">Relajado 😌</option>
         </select>
 
+        <!-- Presupuesto -->
         <label for="presupuesto">¿Cuál es tu presupuesto?</label>
-        <select id="presupuesto">
+        <select id="presupuesto" required>
+            <option value="" selected disabled hidden>Selecciona una opción</option>
             <option value="bajo">Bajo 💰</option>
             <option value="medio">Medio 💵</option>
             <option value="alto">Alto 💎</option>
         </select>
 
+        <!-- Tiempo disponible -->
         <label for="tiempo">¿Cuánto tiempo tienes?</label>
-        <select id="tiempo">
+        <select id="tiempo" required>
+            <option value="" selected disabled hidden>Selecciona una opción</option>
             <option value="poco">Poco ⏳</option>
             <option value="moderado">Moderado ⏰</option>
             <option value="mucho">Mucho 🕰️</option>
         </select>
 
+        <!-- Color favorito -->
         <label for="color">¿Cuál es tu color favorito?</label>
-        <select id="color">
+        <select id="color" required>
+            <option value="" selected disabled hidden>Selecciona una opción</option>
             <option value="rojo">Rojo 🔴</option>
             <option value="azul">Azul 🔵</option>
             <option value="verde">Verde 🟢</option>
@@ -46,5 +55,5 @@
         <button onclick="guardarRespuestas()">Ver recomendaciones</button>
     </div>
     <script src="script.js"></script>
-</body>
+</body>    
 </html>

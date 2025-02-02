@@ -16,12 +16,6 @@ function guardarRespuestas() {
     let tiempo = document.getElementById("tiempo").value;
     let color = document.getElementById("color").value;
 
-    // Validar que se hayan seleccionado opciones válidas
-    if (!estado || !presupuesto || !tiempo || !color) {
-        alert("Por favor, selecciona una opción en todos los campos.");
-        return; // Detener la ejecución si falta algún campo
-    }
-
     // Guardar los valores en localStorage
     localStorage.setItem("estado", estado);
     localStorage.setItem("presupuesto", presupuesto);
