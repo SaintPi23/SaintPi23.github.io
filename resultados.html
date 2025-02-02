@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Ajuste del contenedor de la imagen */
+        #imagen-plato {
+            display: none; /* Inicialmente oculto */
+            width: 200px;    /* Se adapta al 100% del ancho de la pantalla */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo de la imagen recomendada */
+        #imagen-plato-recomendado {
+            max-width: 200px;  /* Limita el ancho máximo de la imagen al 80% */
+            height: auto;    /* Mantiene la proporción de la imagen */
+            margin: 0 auto;  /* Centra la imagen */
+            display: block;
+        }
+
+        /* Contenedor de la tabla con scroll horizontal */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto; /* Permite el scroll horizontal */
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            color: #99D4F5;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            table {
+                display: block;
+            }
+
+            thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 5px;
+            }
+
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                text-align: left;
+                font-weight: bold;
+                color: #99D4F5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h1>Recomendaciones</h1>
+        <button onclick="window.location.href = 'encuesta.html'" class="btn-volver">Volver al formulario</button>
+		<button onclick="window.location.href = 'index.html'" class="btn-volver">Volver al inicio</button>
+
+        
+        <!-- Tabla responsive -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Restaurante</th>
+                        <th>Dirección</th>
+                        <th>Plato</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="resultados">
+                    <!-- Aquí se insertarán las filas con los resultados -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Contenedor para la imagen del plato -->
+        <div id="imagen-plato">
+            <img id="imagen-plato-recomendado" src="" alt="Imagen del plato recomendado">
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            let estado = localStorage.getItem("estado");
+            let presupuesto = localStorage.getItem("presupuesto");
+            let tiempo = localStorage.getItem("tiempo");
+            let color = localStorage.getItem("color");
+
+            // Datos de los restaurantes con el campo de precio e imagen
+            let data = [
+                { restaurante: "Isla Morada", direccion: "Kilómetro 1 Vía las Margaritas, Sopó", plato: "Lomo Saltado", estado: "estresado", presupuesto: "alto", precio: 64400, tiempo: "mucho", color: "naranja", imagen: "imagenes/lomo_salteado.png" },
+                { restaurante: "Isla Morada", direccion: "Kilómetro 1 Vía las Margaritas, Sopó", plato: "MADURO FUSIÓN", estado: "feliz", presupuesto: "alto", precio: 68000, tiempo: "mucho", color: "amarillo", imagen: "imagenes/Maduro_fusion.png" },
+                { restaurante: "Storia d'Amore", direccion: "Carrera 13 #82 -36", plato: "PESTO E PISTACCHIO", estado: "feliz", presupuesto: "alto", precio: 57900, tiempo: "moderado", color: "verde", imagen: "imagenes/pesto_pistacho.jpg" },
+                { restaurante: "Storia d'Amore", direccion: "Carrera 13 #82 -36", plato: "ARRABIATA", estado: "relajado", presupuesto: "medio", precio: 31900, tiempo: "moderado", color: "rosa", imagen: "imagenes/arrabiata.png	" },
+                { restaurante: "Rústica DC", direccion: "Cra 20 #36-53, Bogotá", plato: "Tenessee", estado: "relajado", presupuesto: "bajo", precio: 29700, tiempo: "poco", color: "rojo", imagen: "imagenes/tenessee.webp" },
+                { restaurante: "Rústica DC", direccion: "Cra 20 #36-53, Bogotá", plato: "Rústica", estado: "feliz", presupuesto: "bajo", precio: 29700, tiempo: "poco", color: "rojo", imagen: "imagenes/rustica.webp" },
+                { restaurante: "Oliveto", direccion: "Parkway Calle 41 No 22-32", plato: "Pechuga de pollo tomate seco", estado: "feliz", presupuesto: "alto", precio: 51900, tiempo: "poco", color: "blanco", imagen: "imagenes/pechuga_pollo_tomate.png" },
+                { restaurante: "Oliveto", direccion: "Parkway Calle 41 No 22-32", plato: "Escalope de alcachofa y champiñones", estado: "estresado", presupuesto: "alto", precio: 59900, tiempo: "poco", color: "azul", imagen: "imagenes/ternera_champiñones.png" },
+				{ restaurante: "Crepes & Waffles", direccion: "Cra. 7 #39-21", plato: "Mar Encocado", estado: "estresado", presupuesto: "bajo", precio: 70000, tiempo: "poco", color: "azul", imagen: "imagenes/mar_encocado.jpg" },
+                { restaurante: "Crepes & Waffles", direccion: "Cra. 7 #39-21", plato: "Sombrero Vueltiao", estado: "feliz", presupuesto: "bajo", precio: 75000, tiempo: "poco", color: "azul", imagen: "imagenes/sombrero_vueltiao.jpg" }
+
+            ];
+
+            // Filtrar los resultados según el estado, presupuesto, tiempo y color
+            let resultadosFiltrados = data.filter(item => 
+                item.estado === estado &&
+                item.presupuesto === presupuesto &&
+                item.tiempo === tiempo &&
+                item.color === color
+            );
+
+            // Mostrar los resultados en la tabla
+            let tbody = document.getElementById("resultados");
+            if (resultadosFiltrados.length > 0) {
+                resultadosFiltrados.forEach(item => {
+                    let row = document.createElement("tr");
+                    // Formatear el precio como moneda
+                    let precioFormateado = new Intl.NumberFormat('es-CO', {
+                        style: 'currency',
+                        currency: 'COP'
+                    }).format(item.precio);
+
+                    row.innerHTML = `
+                        <td data-label="Restaurante">${item.restaurante}</td>
+                        <td data-label="Dirección">${item.direccion}</td>
+                        <td data-label="PLATO">${item.plato}</td>
+                        <td data-label="Precio">${precioFormateado}</td>
+                    `;
+                    tbody.appendChild(row);
+
+                    // Mostrar la imagen del plato recomendado
+                    let imagenPlato = document.getElementById("imagen-plato");
+                    let imagen = document.getElementById("imagen-plato-recomendado");
+                    imagenPlato.style.display = "block"; // Mostrar la imagen
+                    imagen.src = item.imagen;
+                });
+            } else {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align: center;">No se encontraron resultados.</td></tr>`;
+                document.getElementById("imagen-plato").style.display = "none"; // Ocultar la imagen si no hay resultados
+            }
+        };
+    </script>
+</body>
+</html>

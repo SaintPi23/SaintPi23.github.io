@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #3370F2, #7133F2);
+    color: white;
+}
+
+/* Contenedor principal */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* Títulos */
+h1 {
+    color: #99D4F5;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Párrafos */
+p {
+    font-size: 14px;
+    color: #DDD;
+    margin-bottom: 20px;
+}
+
+/* Inputs y Select */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #B033F2;
+    border-radius: 5px;
+    font-size: 16px;
+    background: red;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+	background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+}
+select option {
+    background: #3333F2; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+}
+input::placeholder {
+    color: #DDD;
+}
+
+select:focus, input:focus {
+    border-color: #B033F2;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(135deg, #B033F2, #3333F2);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #3333F2, #B033F2);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Mensajes de error */
+.error {
+    color: #FF3333;
+    font-weight: bold;
+}
+
+/* Logo */
+.logo {
+    width: 150px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Resultado de la recomendación */
+#resultado {
+    font-size: 18px;
+    font-weight: bold;
+    color: #99D4F5;
+    margin-top: 15px;
+}
+.restaurant {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.restaurant img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.restaurant iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+th {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    color: #99D4F5;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para el contenedor de la tabla */
+.table-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Estilos para el título de la tabla */
+.table-container h1 {
+    color: #99D4F5;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#color {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #B033F2;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+#color option {
+    background: #3333F2;
+    color: white;
+}
+#color:focus {
+    border-color: #B033F2;
+    background: rgba(255, 255, 255, 0.3);
+}
+/* Estilos para el botón de volver */
+.btn-volver {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(135deg, #B033F2, #3333F2);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn-volver:hover {
+    background: linear-gradient(135deg, #3333F2, #B033F2);
+    transform: scale(1.05);
+}
+
+.btn-volver:active {
+    transform: scale(0.98);
+}
+
+/* Estilos para el contenedor de la imagen */
+.imagen-plato-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.imagen-plato-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* Contenedor de la tabla con scroll horizontal */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Permite el scroll horizontal */
+    margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+th {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    color: #99D4F5;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    table {
+        display: block;
+    }
+
+    thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        text-align: left;
+        font-weight: bold;
+        color: #99D4F5;
+    }
+}

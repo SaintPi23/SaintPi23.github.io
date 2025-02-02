@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta - Food Choice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Personaliza tu recomendación</h1>
+        <label for="estado">¿Cómo te sientes?</label>
+        <select id="estado">
+            <option value="feliz">Feliz 😊</option>
+            <option value="estresado">Estresado 😖</option>
+            <option value="relajado">Relajado 😌</option>
+        </select>
+
+        <label for="presupuesto">¿Cuál es tu presupuesto?</label>
+        <select id="presupuesto">
+            <option value="bajo">Bajo 💰</option>
+            <option value="medio">Medio 💵</option>
+            <option value="alto">Alto 💎</option>
+        </select>
+
+        <label for="tiempo">¿Cuánto tiempo tienes?</label>
+        <select id="tiempo">
+            <option value="poco">Poco ⏳</option>
+            <option value="moderado">Moderado ⏰</option>
+            <option value="mucho">Mucho 🕰️</option>
+        </select>
+
+        <label for="color">¿Cuál es tu color favorito?</label>
+        <select id="color">
+            <option value="rojo">Rojo 🔴</option>
+            <option value="azul">Azul 🔵</option>
+            <option value="verde">Verde 🟢</option>
+            <option value="amarillo">Amarillo 🟡</option>
+            <option value="naranja">Naranja 🟠</option>
+            <option value="rosa">Rosa 🌸</option>
+            <option value="morado">Morado 🟣</option>
+            <option value="blanco">Blanco ⚪</option>
+            <option value="negro">Negro ⚫</option>
+        </select>
+
+        <button onclick="guardarRespuestas()">Ver recomendaciones</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
